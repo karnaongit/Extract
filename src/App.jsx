@@ -4,7 +4,7 @@ import Layout from './components/layout/Layout';
 
 // Import pages
 import Home from './pages/Home';
-import Products from './pages/Products';
+//import Products from './pages/Products';
 import Applications from './pages/Applications';
 import Quality from './pages/Quality';
 import About from './pages/About';
@@ -18,7 +18,7 @@ function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />} />
+        {/* <Route path="/products" element={<Products />} /> */}
         <Route path="/applications" element={<Applications />} />
         <Route path="/quality" element={<Quality />} />
         <Route path="/about" element={<About />} />
