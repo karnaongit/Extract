@@ -9,7 +9,7 @@ const Applications = () => {
       icon: <Utensils size={40} />,
       title: 'Seasonings & Spice Blends',
       description: 'Our oleoresins and extracts provide consistent flavor and color intensity for dry seasoning mixes, rubs, and spice blends used across food manufacturing.',
-      image: 'https://images.unsplash.com/photo-1596040033229-a0b3b10b9c5c?q=80&w=1200',
+      image: 'https://plus.unsplash.com/premium_photo-1669130744503-4939a5bcef43?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       gradient: 'from-red-600 to-orange-500',
       examples: ['Taco seasonings', 'BBQ rubs', 'Curry powders', 'Spice mixes']
     },

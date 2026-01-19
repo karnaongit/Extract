@@ -30,7 +30,8 @@ const Layout = ({ children }) => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-black">
+    <div className="min-h-screen flex flex-col bg-transparent">
+
       <Header />
       
       <AnimatePresence mode="wait">

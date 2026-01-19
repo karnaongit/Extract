@@ -11,7 +11,7 @@ const WhatWeSupply = () => {
       description: 'Paprika Oleoresin and Capsicum Oleoresin supplied with Specification, Batch COA, and SDS upon request.',
       gradient: 'from-red-600 to-orange-500',
       bgGradient: 'from-red-50 to-orange-50',
-      image: 'https://images.unsplash.com/photo-1596040033229-a0b3b10b9c5c?q=80&w=800'
+      image: 'https://media.istockphoto.com/id/491468680/photo/spices-on-wooden-table-selective-focus.webp?a=1&b=1&s=612x612&w=0&k=20&c=zcXUqWG0BOvOlW5liEIn33NjbnVdJX78RqCtE1dMjvg='
     },
     {
       icon: <Palette size={32} />,
@@ -19,7 +19,7 @@ const WhatWeSupply = () => {
       description: 'Plant-derived color solutions for clean-label formulations. Performance depends on formulation and processing conditions.',
       gradient: 'from-yellow-600 to-amber-500',
       bgGradient: 'from-yellow-50 to-amber-50',
-      image: 'https://images.unsplash.com/photo-1505575967455-48710f36b1fb?q=80&w=800'
+      image: 'https://images.unsplash.com/photo-1598563597339-df4d424e8959?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     },
     {
       icon: <Flower2 size={32} />,

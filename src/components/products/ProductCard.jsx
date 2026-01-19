@@ -75,7 +75,7 @@ const ProductCard = ({ product, index }) => {
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3">
+        {/* <div className="flex flex-col sm:flex-row gap-3">
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -92,7 +92,7 @@ const ProductCard = ({ product, index }) => {
             <Download size={16} />
             Specs
           </motion.button>
-        </div>
+        </div> */}
 
         {/* Decorative Element */}
         <div className={`mt-6 h-1 w-0 group-hover:w-full bg-gradient-to-r ${product.gradient} transition-all duration-500 rounded-full`} />

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import Button from '../shared/Button';
 import AnimatedSection from '../shared/AnimatedSection';
-
+import { Link } from 'react-router-dom';
 const Hero = () => {
   const scrollToContent = () => {
     window.scrollTo({
@@ -79,18 +79,26 @@ const Hero = () => {
         </AnimatedSection>
 
         <AnimatedSection delay={0.6}>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-            <Button variant="primary" icon>
-              Request Specifications / COA / SDS
-            </Button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-white/20 backdrop-blur-sm border-2 border-white/50 text-white font-semibold rounded-full hover:bg-white/30 transition-all duration-300"
-            >
-              Request Samples or Commercial Information
-            </motion.button>
-          </div>
+          
+
+<div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+  <Link to="/contact">
+    <Button variant="primary" icon>
+      Request Specifications / COA / SDS
+    </Button>
+  </Link>
+
+  <Link to="/contact">
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="px-8 py-4 bg-white/20 backdrop-blur-sm border-2 border-white/50 text-white font-semibold rounded-full hover:bg-white/30 transition-all duration-300"
+    >
+      Request Samples or Commercial Information
+    </motion.button>
+  </Link>
+</div>
+
         </AnimatedSection>
 
         {/* Trust Bar */}
