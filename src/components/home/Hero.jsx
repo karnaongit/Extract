@@ -43,11 +43,13 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <img 
-              src="public\logo.png" 
-              alt="Sunrise Extracts" 
-              className="h-32 w-32 mx-auto drop-shadow-2xl rounded-t-full"
-            />
+            <div className="text-center">
+  <div className="text-7xl drop-shadow-2xl">🌞</div>
+  <p className="mt-2 text-lg font-semibold tracking-wide">
+    Sunrise Extracts
+  </p>
+</div>
+
           </motion.div>
           
           <motion.h1 

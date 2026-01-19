@@ -45,13 +45,14 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="relative group flex items-center gap-3">
-            <motion.img 
-              src="public\logo.png" 
-              alt="Sunrise Extracts" 
-              className="h-12 w-12 rounded-full"
-              whileHover={{ scale: 1.05, rotate: 5 }}
+           <motion.div
+              className="h-12 w-12 flex items-center justify-center text-4xl rounded-full"
+              whileHover={{ scale: 1.2, rotate: 5 }}
               transition={{ duration: 0.3 }}
-            />
+            >
+              🌞
+            </motion.div>
+
 
             <motion.div
               whileHover={{ scale: 1.02 }}
