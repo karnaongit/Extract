@@ -46,7 +46,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="relative group flex items-center gap-3">
             <motion.img 
-              src="src/assets/logo.png" 
+              src="public\logo.png" 
               alt="Sunrise Extracts" 
               className="h-12 w-12 rounded-full"
               whileHover={{ scale: 1.05, rotate: 5 }}

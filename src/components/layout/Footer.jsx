@@ -57,7 +57,7 @@ const Footer = () => {
           <motion.div variants={itemVariants} className="lg:col-span-1">
             <Link to="/" className="inline-block mb-4">
               <div className="flex items-center gap-3 mb-4">
-                <img src="src\assets\logo.png" alt="Sunrise Extracts" className="h-12 w-12 rounded-full" />
+                <img src="public\logo.png" alt="Sunrise Extracts" className="h-12 w-12 rounded-full" />
                 <h3 className="text-xl font-bold bg-gradient-to-r from-green-800 via-green-700 to-yellow-600 bg-clip-text text-transparent">
                   SUNRISE EXTRACTS
                 </h3>

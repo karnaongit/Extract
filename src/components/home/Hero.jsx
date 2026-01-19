@@ -44,7 +44,7 @@ const Hero = () => {
             className="mb-8"
           >
             <img 
-              src="/src/assets/logo.png" 
+              src="public\logo.png" 
               alt="Sunrise Extracts" 
               className="h-32 w-32 mx-auto drop-shadow-2xl rounded-t-full"
             />
