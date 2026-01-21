@@ -46,7 +46,7 @@ const Hero = () => {
             <img 
               src="/logo_1.png" 
               alt="Sunrise Extracts" 
-              className="h-32 w-32 mx-auto drop-shadow-lg bg-amber-50 rounded-t-full"
+              className="h-32 w-32 mx-auto drop-shadow-lg bg-amber-50 rounded-t-full mt-7"
             />
 
           </motion.div>

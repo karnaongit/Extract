@@ -45,22 +45,87 @@ const Header = () => {
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="relative group flex items-center gap-3">
-            <motion.img 
-              src="/logo_1.png" 
-              alt="Sunrise Extracts" 
-              className="h-20 w-20 bg-amber-50 rounded-full"
-              whileHover={{ scale: 1.05, rotate: 5 }}
-              transition={{ duration: 0.3 }}
-            />
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-              className="text-xl md:text-2xl font-bold bg-gradient-to-r from-yellow-600 via-green-700 to-yellow-200 bg-clip-text text-transparent"
-            >
-              SUNRISE EXTRACTS
-            </motion.div>
-          </Link>
+          <Link to="/" className="relative group flex items-center gap-3 md:gap-4">
+  {/* Powerful Logo Container with Glow Effect */}
+  <motion.div
+    className="relative"
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.98 }}
+    transition={{ type: "spring", stiffness: 400, damping: 25 }}
+  >
+    {/* Outer Glow */}
+    <div className="absolute -inset-3 bg-gradient-to-r from-amber-300/30 to-emerald-300/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+    
+    {/* Middle Glow */}
+    <div className="absolute -inset-1.5 bg-gradient-to-r from-amber-200/40 to-emerald-200/40 rounded-full blur-lg opacity-0 group-hover:opacity-80 transition-opacity duration-300"></div>
+    
+    {/* Logo Image */}
+    <div className="relative h-18 w-18 md:h-24 md:w-24 bg-gradient-to-br from-amber-50 via-white to-emerald-50 rounded-full p-1.5 border-[3px] md:border-4 border-white shadow-2xl">
+      <img 
+        src="/logo_1.png" 
+        alt="Sunrise Extracts" 
+        className="h-full w-full object-cover rounded-full"
+      />
+      {/* Shine Effect */}
+      <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-white/40 via-transparent to-transparent pointer-events-none"></div>
+    </div>
+    
+    {/* Corner Accents */}
+    <div className="absolute -top-1 -right-1 w-3 h-3 md:w-4 md:h-4 bg-gradient-to-br from-amber-400 to-emerald-400 rounded-full border border-white shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    <div className="absolute -bottom-1 -left-1 w-3 h-3 md:w-4 md:h-4 bg-gradient-to-br from-emerald-400 to-amber-400 rounded-full border border-white shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+  </motion.div>
+
+  {/* Powerful Text */}
+  <div className="relative min-w-0">
+    {/* Text Glow */}
+    <div className="absolute -inset-4 bg-gradient-to-r from-amber-200/20 to-emerald-200/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
+    
+    {/* Main Text with Strong Presence */}
+    <motion.div
+      whileHover={{ scale: 1.03 }}
+      transition={{ duration: 0.2 }}
+      className="relative font-extrabold leading-none tracking-tight"
+      style={{
+        fontFamily: "'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+        fontSize: "clamp(1.8rem, 6vw, 2.8rem)",
+        fontWeight: 900,
+        background: "linear-gradient(135deg, #fbbf24 0%, #34d399 50%, #f59e0b 100%)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundClip: "text",
+        letterSpacing: "-0.02em",
+        textTransform: "uppercase"
+      }}
+    >
+      SUNRISE
+      <br className="sm:hidden" />
+      <span className="hidden sm:inline"> </span>
+      EXTRACTS
+    </motion.div>
+
+    {/* Powerful Subtitle */}
+    {/* <div className="mt-2 md:mt-3 relative">
+      <div className="inline-flex items-center gap-1.5 md:gap-2 px-2.5 md:px-3 py-1 md:py-1.5 bg-gradient-to-r from-amber-50/90 to-emerald-50/90 backdrop-blur-sm rounded-full border border-white/80 shadow-lg">
+        
+        <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-gradient-to-r from-amber-400 to-emerald-400 rounded-full"></div>
+        
+        
+        <p className="text-xs md:text-sm font-bold tracking-widest bg-gradient-to-r from-amber-700 to-emerald-700 bg-clip-text text-transparent">
+          INDUSTRIAL GRADE
+        </p>
+        
+        
+        <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-gradient-to-r from-emerald-400 to-amber-400 rounded-full"></div>
+      </div>
+    </div> */}
+
+    {/* Animated Power Line */}
+    <div className="absolute -bottom-2 md:-bottom-3 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-amber-300 to-emerald-300 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+    
+    {/* Reflection Effect */}
+    <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/10 to-white/0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+  </div>
+</Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">

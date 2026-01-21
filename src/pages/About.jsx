@@ -126,43 +126,70 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="px-6 py-32 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <SectionTitle
-            title="Our Approach"
-            subtitle="Core principles that guide our service to industrial food manufacturers"
-            className="mb-20"
-          />
+      <section className="px-6 py-32 relative overflow-hidden">
+  {/* Pattern Background */}
+  <div className="absolute inset-0">
+    <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-amber-50/30 to-white"></div>
+    <div 
+      className="absolute inset-0 opacity-10"
+      style={{
+        backgroundImage: `radial-gradient(circle at 25px 25px, #059669 1px, transparent 0)`,
+        backgroundSize: '50px 50px',
+      }}
+    ></div>
+    <div 
+      className="absolute inset-0 opacity-5"
+      style={{
+        backgroundImage: `linear-gradient(30deg, #059669 12%, transparent 12.5%, transparent 87%, #059669 87.5%, #059669), linear-gradient(150deg, #059669 12%, transparent 12.5%, transparent 87%, #059669 87.5%, #059669), linear-gradient(30deg, #059669 12%, transparent 12.5%, transparent 87%, #059669 87.5%, #059669), linear-gradient(150deg, #059669 12%, transparent 12.5%, transparent 87%, #059669 87.5%, #059669), linear-gradient(60deg, #05966977 25%, transparent 25.5%, transparent 75%, #05966977 75%, #05966977), linear-gradient(60deg, #05966977 25%, transparent 25.5%, transparent 75%, #05966977 75%, #05966977)`,
+        backgroundSize: '80px 140px',
+        backgroundPosition: '0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px'
+      }}
+    ></div>
+  </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <AnimatedSection key={index} delay={index * 0.1}>
-                <motion.div
-                  whileHover={{ y: -10 }}
-                  className="group text-center p-8 bg-gradient-to-br from-green-50 to-yellow-50 rounded-2xl border-2 border-slate-200 hover:border-green-300 transition-all duration-500 shadow-sm hover:shadow-xl"
-                >
-                  {/* Icon */}
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ duration: 0.3 }}
-                    className={`w-20 h-20 mx-auto mb-6 bg-gradient-to-br ${value.gradient} rounded-2xl flex items-center justify-center text-white shadow-lg`}
-                  >
-                    {value.icon}
-                  </motion.div>
+  <div className="relative max-w-7xl mx-auto z-10">
+    <SectionTitle
+      title="Our Approach"
+      subtitle="Core principles that guide our service to industrial food manufacturers"
+      className="mb-20"
+    />
 
-                  {/* Content */}
-                  <h3 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-green-800 transition-colors duration-300">
-                    {value.title}
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors duration-300">
-                    {value.description}
-                  </p>
-                </motion.div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {values.map((value, index) => (
+        <AnimatedSection key={index} delay={index * 0.1}>
+          <motion.div
+            whileHover={{ y: -10 }}
+            className="group text-center p-8 bg-white rounded-2xl border-2 border-slate-200 hover:border-green-300 transition-all duration-500 shadow-xl hover:shadow-2xl relative overflow-hidden"
+          >
+            {/* Card background accent */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-400 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            {/* Floating corner accent */}
+            <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-green-100 to-amber-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-amber-100 to-green-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+            {/* Icon */}
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              transition={{ duration: 0.3 }}
+              className={`w-20 h-20 mx-auto mb-6 bg-gradient-to-br ${value.gradient} rounded-2xl flex items-center justify-center text-white shadow-lg relative z-10`}
+            >
+              {value.icon}
+            </motion.div>
+
+            {/* Content */}
+            <h3 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-green-800 transition-colors duration-300 relative z-10">
+              {value.title}
+            </h3>
+            <p className="text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors duration-300 relative z-10">
+              {value.description}
+            </p>
+          </motion.div>
+        </AnimatedSection>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Certifications Section */}
       <section className="px-6 py-32 bg-gradient-to-br from-green-50 via-white to-yellow-50">

@@ -159,29 +159,128 @@ const Founders = () => {
       </section>
 
       {/* Mission Statement */}
-      <section className="px-6 py-32 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <AnimatedSection>
-            <div className="relative overflow-hidden rounded-2xl">
-              <img 
-                src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1400" 
-                alt="Agricultural landscape"
-                className="w-full h-96 object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-green-900/95 via-green-900/70 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-12 text-white">
-                <h2 className="text-4xl font-bold mb-4">Our Commitment</h2>
-                <p className="text-xl text-green-100 leading-relaxed">
-                  Combining agricultural heritage with professional expertise, we are committed to 
-                  serving industrial food manufacturers with disciplined operations, quality focus, 
-                  and responsive U.S.-based coordination. Our roots in agriculture inform our deep 
-                  respect for quality at origin and throughout the entire supply chain.
-                </p>
-              </div>
+      <section className="px-6 py-32 relative overflow-hidden">
+  {/* Background Pattern with Gradient */}
+  <div className="absolute inset-0">
+    <div className="absolute inset-0 bg-gradient-to-br from-green-50/40 via-white to-yellow-50/30"></div>
+    {/* Subtle geometric pattern */}
+    <div 
+      className="absolute inset-0 opacity-5"
+      style={{
+        backgroundImage: `linear-gradient(30deg, #059669 12%, transparent 12.5%, transparent 87%, #059669 87.5%, #059669),
+                         linear-gradient(150deg, #059669 12%, transparent 12.5%, transparent 87%, #059669 87.5%, #059669),
+                         linear-gradient(30deg, #059669 12%, transparent 12.5%, transparent 87%, #059669 87.5%, #059669),
+                         linear-gradient(150deg, #059669 12%, transparent 12.5%, transparent 87%, #059669 87.5%, #059669),
+                         linear-gradient(60deg, #05966977 25%, transparent 25.5%, transparent 75%, #05966977 75%, #05966977),
+                         linear-gradient(60deg, #05966977 25%, transparent 25.5%, transparent 75%, #05966977 75%, #05966977)`,
+        backgroundSize: '100px 175px',
+        backgroundPosition: '0 0, 0 0, 50px 87.5px, 50px 87.5px, 0 0, 50px 87.5px'
+      }}
+    ></div>
+    {/* Floating circles */}
+    <div className="absolute top-1/4 -left-20 w-96 h-96 bg-gradient-to-br from-green-100/30 to-yellow-100/20 rounded-full blur-3xl"></div>
+    <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-gradient-to-br from-yellow-100/20 to-green-100/30 rounded-full blur-3xl"></div>
+  </div>
+
+  <div className="max-w-6xl mx-auto relative z-10">
+    <AnimatedSection>
+      <div className="flex flex-col lg:flex-row gap-8 items-center">
+        {/* Image Section */}
+        <div className="lg:w-2/5 relative">
+          <div className="relative overflow-hidden rounded-2xl shadow-xl group">
+            <img 
+              src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1400" 
+              alt="Agricultural landscape"
+              className="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-green-900/30 via-green-800/20 to-transparent"></div>
+            {/* Shine effect */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+          </div>
+          
+          {/* Floating Stats Card */}
+          <div className="absolute -bottom-6 -right-6 bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl p-6 border border-white/80 hover:shadow-2xl transition-shadow duration-300">
+            <div className="text-3xl font-bold bg-gradient-to-r from-green-700 to-amber-600 bg-clip-text text-transparent">
+              99.8%
             </div>
-          </AnimatedSection>
+            <div className="text-sm text-slate-600 mt-1">Quality Assurance</div>
+            <div className="w-12 h-1 bg-gradient-to-r from-green-500 to-amber-500 rounded-full mt-2"></div>
+          </div>
         </div>
-      </section>
+
+        {/* Content Section */}
+        <div className="lg:w-3/5">
+          <div className="max-w-2xl">
+            {/* Section Label */}
+            <div className="inline-flex items-center gap-2 mb-6">
+              <div className="w-12 h-0.5 bg-gradient-to-r from-green-500 to-amber-500"></div>
+              <span className="text-sm font-semibold text-green-700 uppercase tracking-wider bg-green-50 px-3 py-1 rounded-full">
+                Our Commitment
+              </span>
+            </div>
+
+            {/* Main Heading */}
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 leading-tight">
+              Where <span className="text-green-700">Nature</span> Meets <span className="text-amber-600">Innovation</span>
+            </h2>
+
+            {/* Description */}
+            <div className="space-y-4 text-slate-700 text-lg leading-relaxed">
+              <p className="p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-slate-100">
+                Combining <span className="font-semibold text-green-700">agricultural heritage</span> with 
+                <span className="font-semibold text-amber-600"> professional expertise</span>, we serve 
+                industrial food manufacturers with disciplined operations, quality focus, and responsive 
+                U.S.-based coordination.
+              </p>
+              <p className="p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-slate-100">
+                Our roots in agriculture inform our deep respect for quality at origin and throughout 
+                the entire supply chain. We maintain traceability and integrity as our core principles, 
+                ensuring every ingredient meets our rigorous standards.
+              </p>
+            </div>
+
+            {/* Features List */}
+            <div className="grid grid-cols-2 gap-4 mt-10">
+              {[
+                { title: "Sustainable Sourcing", color: "green", icon: "🌱" },
+                { title: "Quality Control", color: "amber", icon: "⚡" },
+                { title: "Global Distribution", color: "green", icon: "🌎" },
+                { title: "Technical Support", color: "amber", icon: "💎" }
+              ].map((feature, index) => (
+                <div 
+                  key={index} 
+                  className="flex items-center gap-3 p-3 bg-white/70 backdrop-blur-sm rounded-lg border border-slate-200 hover:border-green-300 transition-colors duration-300"
+                >
+                  <div className={`text-xl ${feature.color === 'green' ? 'text-green-600' : 'text-amber-600'}`}>
+                    {feature.icon}
+                  </div>
+                  <span className={`font-semibold ${feature.color === 'green' ? 'text-green-800' : 'text-amber-800'}`}>
+                    {feature.title}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Button */}
+            <div className="mt-8 pt-6 border-t border-slate-200">
+              <button className="px-8 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold rounded-full hover:shadow-xl hover:shadow-green-600/30 transition-all duration-300 flex items-center gap-2 group">
+                <span>Explore Our Process</span>
+                <svg 
+                  className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </AnimatedSection>
+  </div>
+</section>
     </div>
   );
 };

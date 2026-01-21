@@ -43,7 +43,7 @@ const WhatWeSupply = () => {
     <section className="py-32 bg-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-gradient-to-b from-green-100 via-transparent to-green-100" />
+        <div className="absolute inset-0 bg-gradient-to-b from-green-800 via-transparent to-green-100" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6">
