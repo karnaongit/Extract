@@ -17,7 +17,7 @@ import {
   X
 } from 'lucide-react';
 import { Link } from "react-router-dom";
-import ProductGrid from '../Components/products/ProductGrid';
+import ProductGrid from '../components/products/ProductGrid';
 
 const MotionLink = motion(Link);
 
