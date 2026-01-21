@@ -181,6 +181,13 @@ const Applications = () => {
                 Sunrise Extracts provides technical documentation to support your evaluation process.
               </p>
             </div>
+            <div className="mt-6 p-4 bg-white/60 rounded-lg border border-green-200">
+            <p className="text-xs text-slate-600 leading-relaxed">
+              <strong className="text-green-800">Application Review:</strong> Product suitability is evaluated per application and documentation is provided based on intended industrial use.
+            
+            </p>
+            
+          </div>
           </AnimatedSection>
         </div>
       </section>

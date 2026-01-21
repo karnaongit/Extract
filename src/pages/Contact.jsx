@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, Clock } from 'lucide-react';
 import AnimatedSection from '../components/shared/AnimatedSection';
 
 const Contact = () => {
@@ -127,8 +127,7 @@ const Contact = () => {
                   </div>
                   <h3 className="text-xl font-bold mb-3 text-slate-900">Location</h3>
                   <p className="text-slate-700">
-                    Raleigh, North Carolina<br />
-                    United States
+                   109 Hay Street Suite 202, Fayetteville,<br /> NC 28301 United States
                   </p>
                 </motion.div>
               </AnimatedSection>
@@ -143,10 +142,10 @@ const Contact = () => {
                   </div>
                   <h3 className="text-xl font-bold mb-3 text-slate-900">Email</h3>
                   <a 
-                    href="mailto:karangawande08@gmail.com" 
+                    href="mailto:info@sunriseextracts.net" 
                     className="text-green-700 hover:text-green-800 transition-colors"
                   >
-                   karangawande08@gmail.com
+                   info@sunriseextracts.net
                   </a>
                 </motion.div>
               </AnimatedSection>
@@ -161,13 +160,29 @@ const Contact = () => {
                   </div>
                   <h3 className="text-xl font-bold mb-3 text-slate-900">Phone</h3>
                   <a 
-                    href="tel:+19195551000" 
+                    href="tel:+91 75690 89979" 
                     className="text-green-700 hover:text-green-800 transition-colors"
                   >
-                    +1 (919) XXX-1000
+                   +91 75690 89979
                   </a>
                 </motion.div>
               </AnimatedSection>
+              <AnimatedSection delay={0.3}>
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  className="p-8 bg-white rounded-2xl border-2 border-green-200 shadow-lg"
+                >
+                  <div className="w-16 h-16 bg-gradient-to-br from-emerald-600 to-green-500 rounded-2xl flex items-center justify-center mb-6">
+                    <Clock className="text-white" size={28} />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-slate-900">Business Hours</h3>
+                  <p className="text-slate-700 leading-relaxed">
+                    Monday – Friday: 9:00 AM – 5:00 PM (EST)<br />
+                    Saturday & Sunday: Closed
+                  </p>
+                </motion.div>
+              </AnimatedSection>
+
             </div>
 
             {/* Contact Form */}
@@ -422,6 +437,13 @@ const Contact = () => {
                 </p>
               </div>
             </div>
+            <div className="mt-6 p-4 bg-white/60 rounded-lg border border-green-200">
+            <p className="text-xs text-slate-600 leading-relaxed">
+              <strong className="text-green-800">Samples Policy:</strong> Samples may be provided to qualified business customers following application review and confirmation of intended industrial use.
+            
+            </p>
+            
+          </div>
           </AnimatedSection>
         </div>
       </section>

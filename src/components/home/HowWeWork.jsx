@@ -2,7 +2,9 @@ import { motion } from 'framer-motion';
 import { ClipboardCheck, FileText, Package, ArrowRight } from 'lucide-react';
 import AnimatedSection from '../shared/AnimatedSection';
 import SectionTitle from '../shared/SectionTitle';
+import { Link } from "react-router-dom";
 
+const MotionLink = motion(Link);
 const HowWeWork = () => {
   const steps = [
     {
@@ -98,14 +100,15 @@ const HowWeWork = () => {
               <p className="text-xl text-slate-700 mb-6 font-medium">
                 Ready to discuss your ingredient requirements?
               </p>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-green-700 to-green-600 text-white font-semibold rounded-full hover:shadow-2xl hover:shadow-green-700/30 transition-all duration-300 inline-flex items-center gap-2"
-              >
-                Get Started
-                <ArrowRight size={20} />
-              </motion.button>
+             <MotionLink
+  to="/contact"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="px-8 py-4 bg-gradient-to-r from-green-700 to-green-600 text-white font-semibold rounded-full hover:shadow-2xl hover:shadow-green-700/30 transition-all duration-300 inline-flex items-center gap-2"
+>
+  Get Started
+  <ArrowRight size={20} />
+</MotionLink>
             </motion.div>
           </div>
         </AnimatedSection>

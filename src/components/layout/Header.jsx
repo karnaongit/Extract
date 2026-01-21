@@ -22,10 +22,11 @@ const Header = () => {
   }, [location]);
 
   const navItems = [
-    // { name: 'Products', path: '/products' },
+    
     { name: 'Applications', path: '/applications' },
     { name: 'Quality', path: '/quality' },
     { name: 'About', path: '/about' },
+    { name: 'Products', path: '/products' },
     { name: 'Founders', path: '/founders' },
     { name: 'Contact', path: '/contact' }
   ];
@@ -39,25 +40,23 @@ const Header = () => {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled 
             ? 'bg-white/95 backdrop-blur-lg py-3 shadow-lg shadow-green-900/5' 
-            : 'bg-transparent py-5'
+            : 'bg-transparent py-5 '
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="relative group flex items-center gap-3">
-           <motion.div
-              className="h-12 w-12 flex items-center justify-center text-4xl rounded-full"
-              whileHover={{ scale: 1.2, rotate: 5 }}
+            <motion.img 
+              src="/logo_1.png" 
+              alt="Sunrise Extracts" 
+              className="h-20 w-20 bg-amber-50 rounded-full"
+              whileHover={{ scale: 1.05, rotate: 5 }}
               transition={{ duration: 0.3 }}
-            >
-              🌞
-            </motion.div>
-
-
+            />
             <motion.div
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
-              className="text-xl md:text-2xl font-bold bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-300 bg-clip-text text-transparent font-serif"
+              className="text-xl md:text-2xl font-bold bg-gradient-to-r from-yellow-600 via-green-700 to-yellow-200 bg-clip-text text-transparent"
             >
               SUNRISE EXTRACTS
             </motion.div>
@@ -73,7 +72,7 @@ const Header = () => {
               >
                 <span className={`text-sm font-medium transition-colors duration-300 ${
                   location.pathname === item.path
-                    ? 'text-green-700'
+                    ? 'text-yellow-400'
                     : 'text-black hover:text-green-400'
                 }`}>
                   {item.name}
@@ -86,13 +85,13 @@ const Header = () => {
           </nav>
 
           {/* CTA Button - Desktop */}
-          <motion.button
+          {/* <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="hidden lg:block px-6 py-2.5 bg-gradient-to-r from-green-700 to-green-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-green-700/30 transition-all duration-300"
           >
             Request Info
-          </motion.button>
+          </motion.button> */}
 
           {/* Mobile Menu Button */}
           <button
@@ -151,14 +150,14 @@ const Header = () => {
                   </motion.div>
                 ))}
 
-                <motion.button
+                {/* <motion.button
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: navItems.length * 0.1 }}
                   className="mt-6 px-6 py-4 bg-gradient-to-r from-green-700 to-green-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-green-700/30 transition-all duration-300"
                 >
                   Request Information
-                </motion.button>
+                </motion.button> */}
               </nav>
             </div>
           </motion.div>

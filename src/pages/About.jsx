@@ -26,7 +26,7 @@ const About = () => {
     {
       icon: <MapPin size={32} />,
       title: 'Strategic Location',
-      description: 'Operating from a HUBZone-qualified location in Raleigh, North Carolina, serving manufacturers nationwide.',
+      description: 'Operating from a small business-qualified location in 109 Hay Street Suite 202, Fayetteville, NC 28301 US serving manufacturers nationwide.',
       gradient: 'from-purple-600 to-pink-500'
     }
   ];
@@ -65,7 +65,8 @@ const About = () => {
               className="mb-6"
             >
               <span className="px-4 py-2 bg-yellow-400/20 backdrop-blur-sm border border-yellow-400/30 text-yellow-200 rounded-full text-sm font-semibold">
-                Woman-Owned | HUBZone Certified
+                Woman-Owned Business
+
               </span>
             </motion.div>
             
@@ -113,7 +114,7 @@ const About = () => {
                     reliable supply chain management.
                   </p>
                   <p>
-                    Operating from Raleigh, North Carolina, we provide responsive U.S.-based coordination 
+                    Operating from 109 Hay Street, Suite 202, Fayetteville, NC 28301, US, we provide responsive U.S.-based coordination 
                     and service to manufacturers nationwide, supporting their procurement and quality 
                     review processes with comprehensive documentation and professional communication.
                   </p>
@@ -191,10 +192,10 @@ const About = () => {
                     <MapPin className="text-yellow-700" size={32} />
                   </div>
                   <h2 className="text-3xl font-bold mb-4 text-slate-900">
-                    HUBZone Qualified
+                    HUBZone-eligible
                   </h2>
                   <p className="text-slate-700 leading-relaxed mb-6">
-                    Operating from a HUBZone-qualified location in Raleigh, North Carolina, 
+                    Operating from a HUBZone-eligible Operating location in Raleigh, North Carolina, 
                     supporting economic development and providing quality service.
                   </p>
                   <div className="flex gap-4">

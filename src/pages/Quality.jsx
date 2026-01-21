@@ -35,11 +35,31 @@ const Quality = () => {
       description: 'Documentation of raw material sourcing and country of origin for traceability requirements.',
       gradient: 'from-red-600 to-rose-500'
     },
+    
     {
       icon: <CheckCircle size={32} />,
       title: 'Traceability Information',
       description: 'Complete supply chain traceability from source to delivery for quality assurance and compliance.',
       gradient: 'from-teal-600 to-green-500'
+    },
+     {
+      icon: <FileText size={32} />,
+      title: 'Change Management',
+      description: 'Customers are notified of material changes impacting specifications, origin, or processing where applicable.',
+      gradient: 'from-blue-600 to-cyan-500'
+    },
+    {
+      icon: <FileText size={32} />,
+      title: 'Supplier Qualification',
+      description: 'Sunrise Extracts works with qualified manufacturing partners selected based on documented quality systems, traceability practices, and regulatory compliance. Supplier documentation is reviewed prior to onboarding and maintained as part of our quality records.',
+      gradient: 'from-blue-600 to-cyan-500'
+    },
+   
+    {
+      icon: <FileCheck size={32} />,
+      title: 'Compliance Clarification',
+      description: 'Essential oils supplied by Sunrise Extracts are intended exclusively for industrial food manufacturing, flavor formulation, and fragrance compounding applications. Products are not marketed or supplied for direct consumer retail, therapeutic, cosmetic, or pharmaceutical use.',
+      gradient: 'from-green-600 to-emerald-500'
     }
   ];
 

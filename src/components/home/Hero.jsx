@@ -43,12 +43,11 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <div className="text-center">
-  <div className="text-7xl drop-shadow-2xl">🌞</div>
-  <p className="mt-2 text-lg font-semibold tracking-wide">
-    Sunrise Extracts
-  </p>
-</div>
+            <img 
+              src="/logo_1.png" 
+              alt="Sunrise Extracts" 
+              className="h-32 w-32 mx-auto drop-shadow-lg bg-amber-50 rounded-t-full"
+            />
 
           </motion.div>
           
@@ -77,7 +76,10 @@ const Hero = () => {
             Sunrise Extracts supplies food-grade oleoresins, natural food colors, essential oils, 
             and botanical extracts for industrial food manufacturing applications, supported by 
             documentation-driven processes and responsive U.S.-based coordination.
+            
           </p>
+          <p className='text-sm mb-4 text-green-100'>Documentation‑driven supply of food‑grade oleoresins, natural colors, and essential oils for industrial food manufacturers.</p>
+          
         </AnimatedSection>
 
         <AnimatedSection delay={0.6}>
@@ -90,7 +92,7 @@ const Hero = () => {
     </Button>
   </Link>
 
-  <Link to="/contact">
+  {/* <Link to="/contact">
     <motion.button
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
@@ -98,7 +100,7 @@ const Hero = () => {
     >
       Request Samples or Commercial Information
     </motion.button>
-  </Link>
+  </Link> */}
 </div>
 
         </AnimatedSection>

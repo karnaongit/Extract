@@ -1,79 +1,222 @@
-import { motion } from 'framer-motion';
-import { Droplet, Palette, Flower2, Leaf, Beaker, Sparkles } from 'lucide-react';
-import AnimatedSection from '../components/shared/AnimatedSection';
-import SectionTitle from '../components/shared/SectionTitle';
-import ProductGrid from '../components/products/ProductGrid';
-import { Link } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { Palette, Flower2, Leaf, Sparkles, FileText } from 'lucide-react';
+import { Link } from "react-router-dom";
+
+
+const MotionLink = motion(Link);
+
+// Fixed AnimatedSection Component
+const AnimatedSection = ({ 
+  children, 
+  className = '', 
+  delay = 0,
+  direction = 'up'
+}) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { 
+    once: false, // Changed from true to false
+    margin: "-50px 0px" // Reduced margin
+  });
+
+  const directions = {
+    up: { y: 30, x: 0 },
+    down: { y: -30, x: 0 },
+    left: { x: 30, y: 0 },
+    right: { x: -30, y: 0 },
+    fade: { y: 0, x: 0 }
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{
+        opacity: 0,
+        ...directions[direction]
+      }}
+      animate={isInView ? {
+        opacity: 1,
+        y: 0,
+        x: 0
+      } : {}}
+      transition={{
+        duration: 0.6,
+        delay: delay,
+        ease: "easeOut"
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+// Product Card Component
+const ProductCard = ({ product, index }) => {
+  const cardRef = useRef(null);
+  const isInView = useInView(cardRef, { once: false, margin: "0px 0px -100px 0px" });
+
+  return (
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ y: -10 }}
+      className="group relative bg-white rounded-2xl border-2 border-slate-200 hover:border-green-300 transition-all duration-500 overflow-hidden shadow-sm hover:shadow-xl"
+    >
+      {/* Image Section */}
+      <div className="relative h-56 overflow-hidden">
+        <img 
+          src={product.image} 
+          alt={product.name}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          loading="lazy"
+          onError={(e) => {
+            e.target.src = `https://via.placeholder.com/800x450/FFFFFF/3B82F6?text=${encodeURIComponent(product.name)}`;
+          }}
+        />
+        <div className={`absolute inset-0 bg-gradient-to-t ${product.bgGradient} opacity-40 group-hover:opacity-30 transition-opacity duration-500`} />
+        
+        {/* Category Badge */}
+        <div className="absolute top-4 right-4 z-10">
+          <span className={`px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r ${product.gradient} text-white shadow-lg backdrop-blur-sm`}>
+            {product.category}
+          </span>
+        </div>
+
+        {/* Icon Overlay */}
+        <motion.div
+          whileHover={{ scale: 1.1, rotate: 5 }}
+          transition={{ duration: 0.3 }}
+          className={`absolute bottom-4 left-4 w-16 h-16 bg-gradient-to-br ${product.gradient} rounded-xl flex items-center justify-center text-white shadow-lg`}
+        >
+          {product.icon}
+        </motion.div>
+      </div>
+
+      {/* Content Section */}
+      <div className="p-8">
+        <h3 className="text-2xl font-bold mb-3 text-slate-900 group-hover:text-green-800 transition-colors duration-300">
+          {product.name}
+        </h3>
+        <p className="text-slate-600 leading-relaxed mb-6 group-hover:text-slate-700 transition-colors duration-300">
+          {product.description}
+        </p>
+
+        {/* Features List */}
+        <div className="mb-6 space-y-2">
+          {product.features.map((feature, idx) => (
+            <div key={idx} className="flex items-start gap-2">
+              <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${product.gradient} mt-2 flex-shrink-0`} />
+              <p className="text-sm text-slate-600">{feature}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Documentation */}
+        <div className="mb-6 p-4 bg-slate-50 rounded-lg border border-slate-200">
+          <p className="text-xs font-semibold text-slate-700 mb-2 flex items-center gap-2">
+            <FileText size={14} />
+            Documentation Available:
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {product.documentation.map((doc, idx) => (
+              <span key={idx} className="text-xs px-2 py-1 bg-white rounded border border-slate-200 text-slate-600">
+                {doc}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Decorative Element */}
+        <div className={`mt-6 h-1 w-0 group-hover:w-full bg-gradient-to-r ${product.gradient} transition-all duration-500 rounded-full`} />
+      </div>
+    </motion.div>
+  );
+};
+
+// Product Grid Component
+const ProductGrid = ({ products }) => {
+  const [activeFilter, setActiveFilter] = useState('All');
+  const categories = ['All', 'Oleoresins', 'Food Colors', 'Essential Oils', 'Extracts'];
+
+  const filteredProducts = activeFilter === 'All' 
+    ? products 
+    : products.filter(product => product.category === activeFilter);
+
+  return (
+    <div>
+      {/* Filter Buttons */}
+      <div className="flex flex-wrap justify-center gap-4 mb-12">
+        {categories.map((category) => (
+          <motion.button
+            key={category}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setActiveFilter(category)}
+            className={`px-6 py-3 font-semibold rounded-full transition-all duration-300 ${
+              activeFilter === category
+                ? 'bg-gradient-to-r from-green-700 to-green-600 text-white shadow-lg'
+                : 'bg-white border-2 border-slate-200 text-slate-700 hover:border-green-300 hover:text-green-700'
+            }`}
+          >
+            {category}
+          </motion.button>
+        ))}
+      </div>
+
+      {/* Product Grid */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {filteredProducts.map((product, index) => (
+          <ProductCard key={product.id} product={product} index={index} />
+        ))}
+      </div>
+
+      {/* No Results */}
+      {filteredProducts.length === 0 && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-center py-20"
+        >
+          <p className="text-slate-500 text-lg">No products found in this category.</p>
+        </motion.div>
+      )}
+    </div>
+  );
+};
+
+// Main Products Component
 const Products = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    console.log('Products page mounted');
+    setIsMounted(true);
+    
+    // Optional: Preload images
+    const preloadImages = () => {
+      const images = [
+        'https://images.unsplash.com/photo-1550258987-190a2d41a8ba?q=80&w=800',
+        'https://images.unsplash.com/photo-1628771065518-0d82f1938462?q=80&w=800',
+        'https://images.unsplash.com/photo-1628556270448-4d4e4148e1b1?q=80&w=800',
+        'https://images.unsplash.com/photo-1547514701-42782101795e?q=80&w=800',
+        'https://images.unsplash.com/photo-1588137378633-dea1336ce1e2?q=80&w=800'
+      ];
+      
+      images.forEach(src => {
+        const img = new Image();
+        img.src = src;
+      });
+    };
+    
+    preloadImages();
+    
+    return () => setIsMounted(false);
+  }, []);
+
   const productsData = [
-    // {
-    //   id: 1,
-    //   name: 'Paprika Oleoresin',
-    //   category: 'Oleoresins',
-    //   description: 'High-quality paprika oleoresin for natural color and flavor enhancement in food manufacturing applications.',
-    //   icon: <Droplet size={32} />,
-    //   gradient: 'from-red-600 to-orange-500',
-    //   bgGradient: 'from-red-50 to-orange-50',
-    //   image: 'https://images.unsplash.com/photo-1583454166245-196168ece1e2?q=80&w=800',
-    //   features: [
-    //     'Natural red color intensity',
-    //     'Heat-stable formulation',
-    //     'Clean label compatible',
-    //     'Multiple ASTA unit options'
-    //   ],
-    //   documentation: ['Specification', 'COA', 'SDS', 'Allergen Statement']
-    // },
-    // {
-    //   id: 2,
-    //   name: 'Capsicum Oleoresin',
-    //   category: 'Oleoresins',
-    //   description: 'Concentrated capsicum extract providing heat and pungency for seasonings and spice applications.',
-    //   icon: <Droplet size={32} />,
-    //   gradient: 'from-orange-600 to-red-500',
-    //   bgGradient: 'from-orange-50 to-red-50',
-    //   image: 'https://images.unsplash.com/photo-1583454155184-1bde83ece2a5?q=80&w=800',
-    //   features: [
-    //     'Standardized heat levels',
-    //     'Scoville unit consistency',
-    //     'Oil-soluble format',
-    //     'Extended shelf stability'
-    //   ],
-    //   documentation: ['Specification', 'COA', 'SDS', 'Allergen Statement']
-    // },
-    // {
-    //   id: 3,
-    //   name: 'Turmeric Oleoresin',
-    //   category: 'Oleoresins',
-    //   description: 'Natural turmeric extract for golden-yellow coloring in food products with curcumin content.',
-    //   icon: <Beaker size={32} />,
-    //   gradient: 'from-yellow-600 to-amber-500',
-    //   bgGradient: 'from-yellow-50 to-amber-50',
-    //   image: 'https://images.unsplash.com/photo-1615485500134-275c08a2b9d0?q=80&w=800',
-    //   features: [
-    //     'High curcumin content',
-    //     'Natural yellow pigment',
-    //     'Clean label solution',
-    //     'Multiple concentration options'
-    //   ],
-    //   documentation: ['Specification', 'COA', 'SDS', 'Country of Origin']
-    // },
-    // {
-    //   id: 4,
-    //   name: 'Annatto Extract',
-    //   category: 'Food Colors',
-    //   description: 'Plant-derived natural food color providing yellow to orange hues for clean-label formulations.',
-    //   icon: <Palette size={32} />,
-    //   gradient: 'from-amber-600 to-orange-500',
-    //   bgGradient: 'from-amber-50 to-orange-50',
-    //   image: 'https://images.unsplash.com/photo-1505575967455-48710f36b1fb?q=80&w=800',
-    //   features: [
-    //     'Oil-soluble and water-soluble formats',
-    //     'Natural yellow-orange coloring',
-    //     'pH stable across ranges',
-    //     'Clean label certified'
-    //   ],
-    //   documentation: ['Specification', 'COA', 'SDS', 'Allergen Statement']
-    // },
     {
       id: 5,
       name: 'Beetroot Extract',
@@ -108,23 +251,6 @@ const Products = () => {
       ],
       documentation: ['Specification', 'COA', 'SDS', 'Allergen Statement']
     },
-    // {
-    //   id: 7,
-    //   name: 'Lemon Essential Oil',
-    //   category: 'Essential Oils',
-    //   description: 'Food-grade lemon essential oil for citrus aroma and flavor enhancement in industrial applications.',
-    //   icon: <Flower2 size={32} />,
-    //   gradient: 'from-yellow-500 to-lime-500',
-    //   bgGradient: 'from-yellow-50 to-lime-50',
-    //   image: 'https://images.unsplash.com/photo-1587486937736-e8c6a2f7e5b6?q=80&w=800',
-    //   features: [
-    //     'Cold-pressed extraction',
-    //     'Natural citrus aroma',
-    //     'Food-grade quality',
-    //     'Consistent flavor profile'
-    //   ],
-    //   documentation: ['Specification', 'COA', 'SDS', 'Country of Origin']
-    // },
     {
       id: 8,
       name: 'Peppermint Essential Oil',
@@ -159,23 +285,6 @@ const Products = () => {
       ],
       documentation: ['Specification', 'COA', 'SDS', 'Country of Origin']
     },
-    // {
-    //   id: 10,
-    //   name: 'Ginger Extract',
-    //   category: 'Extracts',
-    //   description: 'Concentrated ginger extract for spicy, warming flavor notes in food and beverage formulations.',
-    //   icon: <Leaf size={32} />,
-    //   gradient: 'from-amber-600 to-yellow-600',
-    //   bgGradient: 'from-amber-50 to-yellow-50',
-    //   image: 'https://images.unsplash.com/photo-1599669454699-248893623440?q=80&w=800',
-    //   features: [
-    //     'Concentrated gingerol content',
-    //     'Spicy flavor profile',
-    //     'Water and oil soluble options',
-    //     'Heat-stable formulation'
-    //   ],
-    //   documentation: ['Specification', 'COA', 'SDS', 'Allergen Statement']
-    // },
     {
       id: 11,
       name: 'Garlic Extract',
@@ -193,40 +302,32 @@ const Products = () => {
       ],
       documentation: ['Specification', 'COA', 'SDS', 'Country of Origin']
     },
-    // {
-    //   id: 12,
-    //   name: 'Black Pepper Extract',
-    //   category: 'Extracts',
-    //   description: 'Piperine-rich black pepper extract for pungency and bioavailability enhancement.',
-    //   icon: <Leaf size={32} />,
-    //   gradient: 'from-gray-700 to-slate-600',
-    //   bgGradient: 'from-gray-50 to-slate-50',
-    //   image: 'https://images.unsplash.com/photo-1599807689214-cd6ab88aaa01?q=80&w=800',
-    //   features: [
-    //     'High piperine content',
-    //     'Natural pungency',
-    //     'Bioavailability enhancer',
-    //     'Clean label ingredient'
-    //   ],
-    //   documentation: ['Specification', 'COA', 'SDS', 'Allergen Statement']
-    // }
   ];
+
+  if (!isMounted) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-yellow-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-green-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-green-700">Loading products...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-yellow-50">
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6 relative overflow-hidden">
-       {/* Background Pattern */}
-<div className="absolute inset-0 opacity-5 pointer-events-none">
-  <div 
-    className="absolute inset-0 pointer-events-none" 
-    style={{
-      backgroundImage: `radial-gradient(circle at 2px 2px, rgba(45, 80, 22, 0.2) 1px, transparent 0)`,
-      backgroundSize: '40px 40px',
-    }}
-  />
-</div>
-
+        <div className="absolute inset-0 opacity-5">
+          <div 
+            className="absolute inset-0" 
+            style={{
+              backgroundImage: `radial-gradient(circle at 2px 2px, rgba(45, 80, 22, 0.2) 1px, transparent 0)`,
+              backgroundSize: '40px 40px',
+            }}
+          />
+        </div>
 
         <div className="relative max-w-7xl mx-auto text-center">
           <AnimatedSection>
@@ -278,10 +379,7 @@ const Products = () => {
       <section className="px-6 pb-32">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="p-12 bg-white rounded-2xl border-2 border-green-200 shadow-xl text-center"
-            >
+            <div className="p-12 bg-white rounded-2xl border-2 border-green-200 shadow-xl text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
                 Need Custom Solutions?
               </h2>
@@ -289,14 +387,15 @@ const Products = () => {
                 Additional botanical and spice extracts may be considered based on application fit 
                 and agreed supply programs. Contact us to discuss your specific requirements.
               </p>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-green-700 to-green-600 text-white font-semibold rounded-full hover:shadow-2xl hover:shadow-green-700/30 transition-all duration-300"
-              >
-                Contact Our Team
-              </motion.button>
-            </motion.div>
+             <MotionLink
+  to="/contact"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="px-8 py-4 inline-block bg-gradient-to-r from-green-700 to-green-600 text-white font-semibold rounded-full hover:shadow-2xl hover:shadow-green-700/30 transition-all duration-300"
+>
+  Contact Our Team
+</MotionLink>
+            </div>
           </AnimatedSection>
         </div>
       </section>

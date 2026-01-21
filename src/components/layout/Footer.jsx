@@ -57,11 +57,7 @@ const Footer = () => {
           <motion.div variants={itemVariants} className="lg:col-span-1">
             <Link to="/" className="inline-block mb-4">
               <div className="flex items-center gap-3 mb-4">
-                <div className="text-center">
-                  <div className="text-7xl drop-shadow-2xl">🌞</div>
-                  
-                </div>
-
+                <img src="/logo_2.png" alt="Sunrise Extracts" className="h-20 w-20 bg-amber-50 rounded-full" />
                 <h3 className="text-xl font-bold bg-gradient-to-r from-green-800 via-green-700 to-yellow-600 bg-clip-text text-transparent">
                   SUNRISE EXTRACTS
                 </h3>
@@ -75,7 +71,7 @@ const Footer = () => {
                 Woman-Owned
               </div>
               <div className="px-3 py-1 bg-yellow-100 border border-yellow-300 rounded-full text-xs text-yellow-700 font-medium">
-                HUBZone
+                Small Business
               </div>
             </div>
           </motion.div>
@@ -134,7 +130,7 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-slate-600 text-sm">
                 <MapPin size={18} className="text-green-600 mt-0.5 flex-shrink-0" />
-                <span>Raleigh, North Carolina<br />United States</span>
+                <span>109 Hay Street Suite 202, Fayetteville,<br /> NC 28301 United States</span>
               </li>
               <li className="flex items-center gap-3 text-slate-600 text-sm hover:text-green-700 transition-colors">
                 <Mail size={18} className="text-green-600 flex-shrink-0" />
@@ -142,8 +138,32 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3 text-slate-600 text-sm hover:text-green-700 transition-colors">
                 <Phone size={18} className="text-green-600 flex-shrink-0" />
-                <a href="tel:+19195551000">+1 (919) XXX-1000</a>
+                <a href="tel:++91 75690 89979">+91 75690 89979</a>
               </li>
+              <li className="flex items-start gap-3 text-slate-600 text-sm">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-[18px] w-[18px] text-green-600 mt-0.5 flex-shrink-0"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+
+                <span>
+                  <strong className="text-green-800">Business Hours</strong><br />
+                  Monday – Friday: 9:00 AM – 5:00 PM (EST)<br />
+                  Saturday & Sunday: Closed
+                </span>
+              </li>
+
+              
             </ul>
           </motion.div>
         </motion.div>
@@ -166,11 +186,17 @@ const Footer = () => {
           {/* Legal Disclaimer */}
           <div className="mt-6 p-4 bg-white/60 rounded-lg border border-green-200">
             <p className="text-xs text-slate-600 leading-relaxed">
-              <strong className="text-green-800">Disclaimer:</strong> Specifications and availability are subject to confirmation. 
-              No pharmaceutical, medical, or health claims are made or implied. Customers are responsible for validating 
-              ingredient suitability for their formulations and compliance with applicable regulations.
+              <strong className="text-green-800">Disclaimer:</strong> Products supplied for industrial food manufacturing applications only. No pharmaceutical, medical, or health claims are made or implied. Website content is informational and does not constitute an offer to sell.
+            
+            </p>
+            <br />
+            <p className="text-xs text-slate-600 leading-relaxed">
+              <strong className="text-green-800">Governing Law:</strong> This website and business operations are governed by the laws of the State of North Carolina, United States.
             </p>
           </div>
+          
+
+          
         </motion.div>
       </div>
     </footer>
