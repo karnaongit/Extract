@@ -142,10 +142,17 @@ const Contact = () => {
                   </div>
                   <h3 className="text-xl font-bold mb-3 text-slate-900">Email</h3>
                   <a 
-                    href="mailto:info@sunriseextracts.net" 
+                    href="mailto:varun@sunriseextracts.net" 
                     className="text-green-700 hover:text-green-800 transition-colors"
                   >
-                   info@sunriseextracts.net
+                   varun@sunriseextracts.net
+                  </a>
+                  <br/> 
+                  <a 
+                    href="mailto:priya@sunriseextracts.net" 
+                    className="text-green-700 hover:text-green-800 transition-colors"
+                  >
+                   priya@sunriseextracts.net
                   </a>
                 </motion.div>
               </AnimatedSection>
@@ -163,7 +170,7 @@ const Contact = () => {
                     href="tel:+91 75690 89979" 
                     className="text-green-700 hover:text-green-800 transition-colors"
                   >
-                   +91 75690 89979
+                   919-249-8010
                   </a>
                 </motion.div>
               </AnimatedSection>
